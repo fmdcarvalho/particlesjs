@@ -1,13 +1,14 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var focus = true;
+var fps = 1000/60;
 
-window.onblur = function(event){
-	focus = false;
+window.onblur = function (event) {
+    fps = 1000/500; 
 }
 
-window.onfocus = function(event){
-	focus = true;
+window.onfocus = function (event) {
+    fps = 1000 / 60;
 }
 
 window.onresize = function(event) {
@@ -198,13 +199,10 @@ function draw()
 }
 
 function wrapper(){
-	if(focus){
-		draw();
-		setTimeout(wrapper, 32);
-	}
-	else{
-		setTimeout(wrapper, 500);
-	}
+    requestID = requestAnimationFrame(function () {
+        setTimeout(wrapper, fps);
+        draw();
+    });
 }
 
 $(window).ready(function(){
