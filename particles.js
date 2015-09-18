@@ -19,7 +19,7 @@ function resizeCanvas() {
 	console.log("resize");
 	canvas.width = window.innerWidth; 
 	canvas.height = window.innerHeight;
-	init();
+//	init();
 }
 
 canvas.width = window.innerWidth; 
